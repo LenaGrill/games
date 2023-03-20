@@ -14,9 +14,6 @@
 
 from blackjack_logo import logo
 from random import randrange
-print(logo)
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-max = len(cards) # returns the number of items in cards
 
 def card_choice(): 
   """ this function randomly pics a card from cards """
@@ -115,6 +112,9 @@ def blackjack(player_won, computer_won):
   return player_won, computer_won
 
 # starts the blackjack game by asking for a game and ends it by returning number of winnings
+print(logo)
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+max = len(cards) # returns the number of items in cards
 game_on = "y"
 computer_won = 0
 player_won = 0
