@@ -37,8 +37,8 @@ def handout_player():
   """ gives out first two cards player """
   card1 = card_choice()
   card2 = card_choice()
-  current_score = card1 + card2
   current_cards = [card1, card2]
+  current_score = calc_score(current_cards)
   print(f"Your cards: {current_cards}, current score: ", current_score)
   return current_score, current_cards
 
@@ -46,30 +46,36 @@ def handout_computer():
   """ gives out first two cards computer """
   computer_card1 = card_choice()
   computer_card2 = card_choice()
-  computer_score = computer_card1 + computer_card2
   computer_cards = [computer_card1, computer_card2]
+  computer_score = calc_score(computer_cards)
   print(f"Computer's first card: {computer_card1}")
   return computer_score, computer_cards
 
-def check_ace(a, b):
+def calc_score(x):
+  score = sum(x)
+  return score
+
+def check_ace(c, d):
   """checks if ace is present. If yes and when score is above 21, 11 is replaced by 1"""
   new_cards = []
-  for card in a:
-    if card == 11 and b > 21:
+  for card in c:
+    if card == 11 and d > 21:
       card = 1
+      d = d - 10
     else:
       card = card
     new_cards.append(card)
-  return new_cards
+    new_score = calc_score(new_cards)
+  return new_score, new_cards
 
 def blackjack(player_won, computer_won):
   """this function is the actual game and returns nr of games won + 1"""
   current_score, current_cards = handout_player()
-  current_cards = check_ace(current_cards, current_score)
+  current_score, current_cards = check_ace(current_cards, current_score)
   computer_score, computer_cards = handout_computer()
-  computer_cards = check_ace(computer_cards, computer_score)
+  computer_score, computer_cards = check_ace(computer_cards, computer_score)
   
-  # detects blackjack:
+  # detects blackjack and increases number of won games for the winner by one:
   if computer_score == 21:
     print("Opponent has Black Jack! You lose!")
     computer_won += 1
