@@ -96,7 +96,7 @@ def blackjack(player_won, computer_won):
         print("You went over, you lose!")
         computer_won += 1
         answer = "n"    
-    elif answer == "n":
+    else:
       while computer_score < 16:
         new_card, computer_score, computer_cards = deal_card(computer_score, computer_cards)
       print(f"computer's score: {computer_score}")
