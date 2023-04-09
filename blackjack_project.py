@@ -14,6 +14,7 @@
 
 from blackjack_logo import logo
 from random import randrange
+from os import system
 
 def card_choice(): 
   """ this function randomly pics a card from cards """
@@ -118,7 +119,7 @@ def blackjack(player_won, computer_won):
   return player_won, computer_won
 
 # starts the blackjack game by asking for a game and ends it by returning number of winnings
-print(logo)
+
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 max = len(cards) # returns the number of items in cards
 game_on = "y"
@@ -127,8 +128,12 @@ player_won = 0
 while game_on == "y":
   game_on = input("\n Do you want to play a game of Black Jack? Type 'y' or 'n'") 
   if game_on == "y":
+    system('cls') # clears the screen before starting a new game
+    print(logo)
     player_won, computer_won = blackjack(player_won, computer_won)
   else:
+    system('cls')
+    print(logo)
     print(f"Player won {player_won} times")
     print(f"Opponent won {computer_won} times")
     print("Good Bye!")
