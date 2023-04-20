@@ -27,7 +27,7 @@ def easy(number, easy_attempts):
         # guess()
         # still missing: check if int was added and catch string input
         easy_attempts = check_answer(guess, number, easy_attempts)
-    print("No attempts left. You lose!")
+        print("No attempts left. You lose!")
     return False
 
 def hard(number, hard_attempts):
@@ -40,11 +40,12 @@ def hard(number, hard_attempts):
 
 print(logo)
 number = randrange(1, 101)
+easy_attempts = 10
+hard_attempts = 5
+
 # print(f"The number is {number}")
 print("Welcome to the number guessing game!")
 print("I'm thinking of a number between 1 and 100.")
-easy_attempts = 10
-hard_attempts = 5
 
 game_is_on = True
 while game_is_on:
